@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Piyush Yadav – Data Science &amp; Analytics</title>
+<meta name="description" content="Portfolio of Piyush Yadav, a data science and data analytics professional skilled in Python, SQL, Power BI and machine learning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F3EF;
+  --ink:#1E2230;
+  --muted:#596073;
+  --glass:rgba(255,255,255,.52);
+  --glass-strong:rgba(255,255,255,.72);
+  --edge:rgba(255,255,255,.85);
+  --edge-dim:rgba(30,34,48,.08);
+  --shadow:0 10px 36px rgba(48,58,110,.12);
+  --accent:#4B5CF0;
+  --accent-ink:#ffffff;
+  --teal:#2FB9A8;
+  --coral:#FF9DB0;
+  --blob-a:rgba(75,92,240,.34);
+  --blob-b:rgba(47,185,168,.30);
+  --blob-c:rgba(255,157,176,.38);
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12141C;--ink:#ECEEF5;--muted:#A3A9BC;
+    --glass:rgba(255,255,255,.06);--glass-strong:rgba(255,255,255,.1);
+    --edge:rgba(255,255,255,.16);--edge-dim:rgba(255,255,255,.08);
+    --shadow:0 10px 36px rgba(0,0,0,.4);
+    --accent:#8F9BFF;--accent-ink:#12141C;--teal:#4FD6C4;--coral:#FF9DB0;
+    --blob-a:rgba(75,92,240,.35);--blob-b:rgba(47,185,168,.22);--blob-c:rgba(255,120,150,.22);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12141C;--ink:#ECEEF5;--muted:#A3A9BC;
+  --glass:rgba(255,255,255,.06);--glass-strong:rgba(255,255,255,.1);
+  --edge:rgba(255,255,255,.16);--edge-dim:rgba(255,255,255,.08);
+  --shadow:0 10px 36px rgba(0,0,0,.4);
+  --accent:#8F9BFF;--accent-ink:#12141C;--teal:#4FD6C4;--coral:#FF9DB0;
+  --blob-a:rgba(75,92,240,.35);--blob-b:rgba(47,185,168,.22);--blob-c:rgba(255,120,150,.22);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-size:1.0625rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+
+/* backdrop the glass refracts */
+.backdrop{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.backdrop span{position:absolute;border-radius:50%;filter:blur(70px)}
+.backdrop .a{width:46vw;height:46vw;min-width:320px;min-height:320px;left:-10vw;top:-8vw;background:var(--blob-a)}
+.backdrop .b{width:40vw;height:40vw;min-width:280px;min-height:280px;right:-8vw;top:28vh;background:var(--blob-b)}
+.backdrop .c{width:36vw;height:36vw;min-width:260px;min-height:260px;left:22vw;bottom:-14vw;background:var(--blob-c)}
+
+.glass{
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(22px) saturate(160%);
+  backdrop-filter:blur(22px) saturate(160%);
+  border:1px solid var(--edge);
+  border-radius:24px;
+  box-shadow:var(--shadow),inset 0 1px 0 var(--edge);
+}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+section{padding:72px 0 0}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1.08}
+h2{font-size:clamp(1.8rem,3.4vw,2.5rem);font-weight:700;margin-bottom:26px}
+h3{font-size:1.3rem;font-weight:650}
+p{margin:0}
+.muted{color:var(--muted)}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-top:14px}
+nav{
+  display:flex;align-items:center;gap:14px;
+  padding:8px 10px 8px 12px;border-radius:999px;
+}
+.mark{
+  display:grid;place-items:center;width:38px;height:38px;border-radius:50%;
+  font-family:var(--display);font-weight:700;font-size:.95rem;text-decoration:none;
+  background:var(--accent);color:var(--accent-ink);flex:none;
+}
+.links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.links::-webkit-scrollbar{display:none}
+.links a{
+  text-decoration:none;font-weight:500;font-size:.95rem;padding:8px 14px;border-radius:999px;
+  color:var(--muted);white-space:nowrap;transition:background .2s,color .2s;
+}
+.links a:hover{background:var(--glass-strong);color:var(--ink)}
+.toggle{
+  flex:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--edge-dim);
+  background:var(--glass-strong);color:var(--ink);cursor:pointer;display:grid;place-items:center;
+}
+.toggle svg{width:18px;height:18px}
+
+/* hero */
+.hero{padding-top:56px;display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
+.hero h1{font-size:clamp(2.8rem,7.4vw,5.4rem);font-weight:750;font-variation-settings:"wdth" 100}
+.hero .role{font-family:var(--display);font-size:clamp(1.15rem,2.2vw,1.5rem);font-weight:500;color:var(--muted);margin:14px 0 20px}
+.hero .lead{max-width:34rem}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;
+  padding:13px 22px;border-radius:999px;border:1px solid transparent;transition:transform .2s,background .2s;
+}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:var(--glass);border-color:var(--edge);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.btn:hover{transform:translateY(-2px)}
+
+.board{padding:22px;position:relative}
+.board-top{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.avatar{
+  width:56px;height:56px;border-radius:50%;display:grid;place-items:center;flex:none;
+  font-family:var(--display);font-weight:700;font-size:1.25rem;
+  background:linear-gradient(135deg,var(--accent),var(--teal));color:#fff;
+  box-shadow:0 0 0 4px var(--glass-strong);
+}
+.board-top b{display:block;font-family:var(--display);font-size:1.05rem}
+.board-top span{font-size:.9rem;color:var(--muted)}
+.chart{display:flex;align-items:flex-end;gap:9px;height:150px;padding:14px 12px 0;border-radius:16px;background:var(--glass);border:1px solid var(--edge-dim)}
+.chart i{
+  flex:1;border-radius:8px 8px 3px 3px;height:var(--h);
+  background:linear-gradient(180deg,var(--accent),color-mix(in srgb,var(--accent) 45%,var(--teal)));
+  transform-origin:bottom;animation:rise .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*70ms + 250ms);
+}
+.chart i:nth-child(3n){background:linear-gradient(180deg,var(--teal),color-mix(in srgb,var(--teal) 50%,var(--accent)))}
+@keyframes rise{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.board-note{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-size:.88rem;color:var(--muted)}
+
+/* about */
+.about{padding:30px 32px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+.about p{max-width:46rem;font-size:1.12rem}
+.facts{display:flex;flex-direction:column;gap:10px;min-width:210px}
+.facts div{padding:12px 16px;border-radius:16px;background:var(--glass);border:1px solid var(--edge-dim)}
+.facts b{display:block;font-family:var(--display);font-size:1rem}
+.facts span{font-size:.88rem;color:var(--muted)}
+
+/* experience */
+.two{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
+.card{padding:28px}
+.job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;margin-bottom:16px}
+.when{color:var(--muted);font-size:.95rem}
+.list{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.list li{position:relative;padding-left:22px}
+.list li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.stack{display:grid;gap:20px;align-content:start}
+.mini h3{font-size:1.1rem;margin-bottom:4px}
+.mini p{font-size:.96rem}
+.mini .cert{display:grid;gap:10px;margin-top:10px}
+.mini .cert div{padding:10px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--edge-dim);font-size:.95rem}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.project{padding:26px;display:flex;flex-direction:column;gap:16px;grid-column:span 3}
+.project.wide{grid-column:span 6;flex-direction:row;gap:30px;align-items:center}
+.project.wide .body{flex:1}
+.art{
+  flex:none;border-radius:18px;background:var(--glass);border:1px solid var(--edge-dim);
+  display:grid;place-items:center;color:var(--accent);
+}
+.project.wide .art{width:min(280px,36%);aspect-ratio:1/1}
+.project:not(.wide) .art{height:150px}
+.art svg{width:100%;height:100%;max-width:240px}
+.art .alt{color:var(--teal)}
+.scan{transition:transform 1.4s ease-in-out}
+.project:hover .scan{transform:translateY(96px)}
+.body{display:flex;flex-direction:column;gap:12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{
+  font-size:.84rem;font-weight:500;padding:4px 12px;border-radius:999px;
+  background:var(--glass-strong);border:1px solid var(--edge-dim);
+}
+.project .list{gap:8px;font-size:.98rem}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.skill{padding:24px}
+.skill h3{font-size:1.05rem;margin-bottom:14px}
+
+/* contact */
+.contact{padding:40px 34px;display:flex;flex-wrap:wrap;gap:26px 40px;justify-content:space-between;align-items:center}
+.contact h2{margin-bottom:8px}
+.reach{display:grid;gap:10px}
+.reach a{
+  display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:500;
+  padding:12px 18px;border-radius:16px;background:var(--glass);border:1px solid var(--edge-dim);transition:background .2s;
+  overflow-wrap:anywhere;
+}
+.reach a:hover{background:var(--glass-strong)}
+.reach svg{width:18px;height:18px;flex:none;color:var(--accent)}
+footer{padding:40px 0 48px;color:var(--muted);font-size:.92rem}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding-top:36px}
+  .about{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .project{grid-column:span 6}
+  .project.wide{flex-direction:column;align-items:stretch}
+  .project.wide .art{width:100%;aspect-ratio:auto;height:180px}
+  .skills{grid-template-columns:1fr}
+  .links a{padding:8px 10px}
+}
+@media (max-width:520px){
+  .wrap{padding:0 14px}
+  .card,.project,.skill{padding:22px}
+  .about{padding:24px}
+  .links a:nth-child(1){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .chart i{animation:none}
+  .scan,.btn{transition:none}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .glass{background:var(--glass-strong)}
+}
+</style>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"><span class="a"></span><span class="b"></span><span class="c"></span></div>
+
+<header>
+  <div class="wrap">
+    <nav class="glass" aria-label="Main">
+      <a class="mark" href="#top" aria-label="Piyush Yadav, back to top">PY</a>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="toggle" id="theme" type="button" aria-label="Switch to dark theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <div class="hero">
+    <div>
+      <h1>Piyush Yadav</h1>
+      <p class="role">Data Scientist &amp; Data Analyst</p>
+      <p class="lead">I clean, analyse and visualise large datasets so teams can see what customers do and decide what to do next. I work in Python, SQL and Power BI.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn ghost" href="mailto:py07173@gmail.com">Email me</a>
+      </div>
+    </div>
+
+    <aside class="glass board" aria-label="Profile card">
+      <div class="board-top">
+        <!-- To use a photo later: replace the div below with <img class="avatar" src="your-photo.jpg" alt="Piyush Yadav"> -->
+        <div class="avatar" aria-hidden="true">PY</div>
+        <div>
+          <b>Data Scientist Intern</b>
+          <span>Utilized, Aug 2025 – Jan 2026</span>
+        </div>
+      </div>
+      <div class="chart" role="img" aria-label="Decorative bar chart">
+        <i style="--h:38%;--i:0"></i><i style="--h:52%;--i:1"></i><i style="--h:44%;--i:2"></i>
+        <i style="--h:66%;--i:3"></i><i style="--h:58%;--i:4"></i><i style="--h:78%;--i:5"></i>
+        <i style="--h:70%;--i:6"></i><i style="--h:92%;--i:7"></i>
+      </div>
+      <div class="board-note"><span>Dashboards, KPIs, reports</span><span>Decorative chart</span></div>
+    </aside>
+  </div>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="glass about">
+      <p>I'm a data science and analytics professional with hands-on experience in Python, SQL, Power BI, machine learning and exploratory data analysis. I'm most at home in customer behaviour analysis, dashboard design and predictive modelling, turning large datasets into insight that stakeholders can use.</p>
+      <div class="facts">
+        <div><b>BE Biotechnology</b><span>Chandigarh University, 2021 – 2025</span></div>
+        <div><b>Looking for</b><span>Data science and data analytics roles</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="two">
+      <article class="glass card">
+        <div class="job-head">
+          <div>
+            <h3>Data Scientist Intern</h3>
+            <p class="muted">Utilized</p>
+          </div>
+          <p class="when">August 2025 – January 2026</p>
+        </div>
+        <ul class="list">
+          <li>Cleaned, preprocessed and explored real-world datasets to find trends and insights teams could act on.</li>
+          <li>Wrote SQL queries and Python (Pandas, NumPy) scripts to analyse structured data and produce business performance reports.</li>
+          <li>Designed interactive dashboards and visualisations that communicate key KPIs and support decisions.</li>
+          <li>Delivered insights and stakeholder reports using SQL, Python and dashboarding tools.</li>
+        </ul>
+      </article>
+
+      <div class="stack">
+        <div class="glass card mini">
+          <h3>Education</h3>
+          <p><b>BE Biotechnology</b></p>
+          <p class="muted">Chandigarh University, Mohali, India<br>2021 – 2025</p>
+        </div>
+        <div class="glass card mini">
+          <h3>Certifications</h3>
+          <div class="cert">
+            <div>Data Science and Machine Learning, The Skillians Academy</div>
+            <div>Data Scientist, Utilized</div>
+            <div>50 Days LeetCode badge</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+
+      <article class="glass project wide">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 50V30a8 8 0 0 1 8-8h20M110 22h20a8 8 0 0 1 8 8v20M138 110v20a8 8 0 0 1-8 8h-20M50 138H30a8 8 0 0 1-8-8v-20"/>
+            <circle cx="80" cy="68" r="24" stroke-width="2.5"/>
+            <path d="M52 124c4-16 16-24 28-24s24 8 28 24" stroke-width="2.5"/>
+            <circle class="alt" cx="71" cy="64" r="2.5" fill="currentColor" stroke="none" style="color:var(--teal)"/>
+            <circle cx="89" cy="64" r="2.5" fill="var(--teal)" stroke="none"/>
+            <path class="scan" d="M30 40h100" stroke="var(--teal)" stroke-width="2.5" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Face Recognition System</h3>
+          <div class="tags"><span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">OpenCV</span></div>
+          <ul class="list">
+            <li>Built a real-time system that identifies and authenticates people from live camera feeds and static images.</li>
+            <li>Integrated machine learning models to raise recognition accuracy while keeping false positives low across different conditions.</li>
+            <li>Tested and tuned it under varying lighting and backgrounds so real-time processing stays robust and suited to scalable deployment.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="glass project">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 200 120" fill="none">
+            <g fill="currentColor" opacity=".9">
+              <rect x="22" y="70" width="18" height="36" rx="4"/><rect x="50" y="52" width="18" height="54" rx="4"/>
+              <rect x="78" y="62" width="18" height="44" rx="4"/><rect x="106" y="36" width="18" height="70" rx="4"/>
+              <rect x="134" y="46" width="18" height="60" rx="4"/><rect x="162" y="22" width="18" height="84" rx="4"/>
+            </g>
+            <path d="M31 58l28-20 28 10 28-26 28 8 28-24" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Customer Behaviour Data Analytics</h3>
+          <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">MySQL</span><span class="tag">Power BI</span></div>
+          <ul class="list">
+            <li>Analysed customer shopping data end to end: cleaning, preprocessing and EDA to find purchasing trends and behaviour patterns.</li>
+            <li>Wrote SQL queries on revenue trends, customer segmentation, retention, discount impact and category performance.</li>
+            <li>Built interactive Power BI dashboards for KPIs such as revenue and average order value.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="glass project">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 200 120" fill="none">
+            <circle cx="60" cy="60" r="38" stroke="var(--glass-strong)" stroke-width="16"/>
+            <circle cx="60" cy="60" r="38" stroke="currentColor" stroke-width="16" stroke-dasharray="105 240" transform="rotate(-90 60 60)"/>
+            <circle cx="60" cy="60" r="38" stroke="var(--teal)" stroke-width="16" stroke-dasharray="62 240" stroke-dashoffset="-110" transform="rotate(-90 60 60)"/>
+            <circle cx="60" cy="60" r="38" stroke="var(--coral)" stroke-width="16" stroke-dasharray="40 240" stroke-dashoffset="-176" transform="rotate(-90 60 60)"/>
+            <g fill="currentColor" opacity=".85">
+              <rect x="124" y="30" width="56" height="10" rx="5"/><rect x="124" y="52" width="40" height="10" rx="5"/>
+              <rect x="124" y="74" width="48" height="10" rx="5"/><rect x="124" y="96" width="28" height="10" rx="5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Ferns and Petals Sales Analysis</h3>
+          <div class="tags"><span class="tag">Excel</span><span class="tag">Pivot Tables</span><span class="tag">Slicers</span></div>
+          <ul class="list">
+            <li>Built an interactive Excel sales dashboard with pivot tables, charts, slicers and formulas.</li>
+            <li>Analysed revenue, monthly sales trends, customer spending and product performance.</li>
+            <li>Reported on top cities by orders, sales by occasion and delivery time.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="glass skill">
+        <h3>Languages</h3>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span></div>
+      </div>
+      <div class="glass skill">
+        <h3>Databases</h3>
+        <div class="tags"><span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span></div>
+      </div>
+      <div class="glass skill">
+        <h3>Machine learning</h3>
+        <div class="tags"><span class="tag">Predictive modelling</span><span class="tag">Regression</span><span class="tag">Classification</span><span class="tag">Feature engineering</span></div>
+      </div>
+      <div class="glass skill">
+        <h3>Data analytics</h3>
+        <div class="tags"><span class="tag">SQL</span><span class="tag">EDA</span><span class="tag">Data cleaning</span><span class="tag">Dashboarding</span><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">KPI tracking</span><span class="tag">Customer behaviour analysis</span><span class="tag">Reporting</span></div>
+      </div>
+      <div class="glass skill" style="grid-column:1/-1">
+        <h3>Tools</h3>
+        <div class="tags"><span class="tag">Git</span><span class="tag">Docker</span><span class="tag">Jupyter</span><span class="tag">VS Code</span><span class="tag">Power BI</span><span class="tag">Tableau</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="glass contact">
+      <div>
+        <h2>Let's talk</h2>
+        <p class="muted" style="max-width:26rem">I'm open to data science and data analytics roles. Send me an email or message me on LinkedIn.</p>
+      </div>
+      <div class="reach">
+        <a href="mailto:py07173@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+          py07173@gmail.com
+        </a>
+        <a href="tel:+919149341824">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+          +91 91493 41824
+        </a>
+        <a href="https://www.linkedin.com/in/piyush-yadav-5b88b1292/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 11v5M8 8v.01M12 16v-5m0 2.5c0-1.4 1-2.5 2.3-2.5S16.5 12 16.5 13.5V16"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Piyush Yadav</footer>
+</main>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  function apply(t){
+    root.setAttribute('data-theme',t);
+    btn.setAttribute('aria-label', t==='dark' ? 'Switch to light theme' : 'Switch to dark theme');
+  }
+  try{ var saved=localStorage.getItem('pf-theme'); if(saved==='dark'||saved==='light') apply(saved); }catch(e){}
+  btn.addEventListener('click',function(){
+    var next = root.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+    apply(next);
+    try{ localStorage.setItem('pf-theme',next); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
